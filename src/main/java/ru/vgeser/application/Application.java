@@ -6,12 +6,13 @@ public class Application {
 
     static private Random r = new Random(22022022);
     private final Heap heap = new Heap();
-    private final long ceiling;
+    private final int ceiling;
 
     public Application() {
-        ceiling = Math.round(Math.sqrt(Integer.MAX_VALUE));
+        ceiling = 10000;
     }
-    public Application(long ceiling){
+
+    public Application(int ceiling) {
         this.ceiling = ceiling;
     }
 
@@ -19,6 +20,7 @@ public class Application {
      * creating an ArrayList of int arrays
      * each array has unique length with maximum of set ceiling
      * ArrayList type used for memory safety
+     *
      * @param quantity - number of int arrays
      * @return - ArrayList of specified number of int arrays
      */
@@ -29,9 +31,13 @@ public class Application {
             lengths.add(i);
         }
         Collections.shuffle(lengths);
-        for (int i = 0; i < quantity; i++) {
-            int[] arr = new int[lengths.get(i)];
-            res.add(arr);
+        try {
+            for (int i = 0; i < quantity; i++) {
+                int[] arr = new int[lengths.get(i)];
+                res.add(arr);
+            }
+        } catch (OutOfMemoryError err) {
+            err.printStackTrace();
         }
         return res;
     }
@@ -39,6 +45,7 @@ public class Application {
     /**
      * filling arrays with random numbers
      * random number generator is different for each array
+     *
      * @param arr - filled array
      */
     private void fillArray(int[] arr) {
@@ -52,6 +59,7 @@ public class Application {
 
     /**
      * unboxing ArrayList and passing its int arrays to be filled
+     *
      * @param given - ArrayList with all of its int arrays filled with random numbers
      */
     private void fillArrayList(ArrayList<int[]> given) {
@@ -61,6 +69,7 @@ public class Application {
     /**
      * simple function of reversing an int array
      * Collections.reverse method not used because it does not work with primitive type arrays
+     *
      * @param arr - reversed array
      */
     private void reverseArray(int[] arr) {
@@ -74,6 +83,7 @@ public class Application {
 
     /**
      * sorting int arrays of a given ArrayList
+     *
      * @param given - input ArrayList to be sorted
      */
     private void sortArrayList(ArrayList<int[]> given) {
@@ -91,6 +101,7 @@ public class Application {
     /**
      * the main required function
      * calls other methods and operates with their output
+     *
      * @param n - number of arrays to be created
      * @return - two-dimensional array of ints
      */

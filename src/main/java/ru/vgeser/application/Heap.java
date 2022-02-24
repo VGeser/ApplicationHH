@@ -3,10 +3,11 @@ package ru.vgeser.application;
 class Heap {
     /**
      * calls other small functions, makes steps of algorithm
+     *
      * @param arr - input array
      */
     public void heapsort(int[] arr) {
-        int quantity=arr.length;
+        int quantity = arr.length;
         int[] heap = new int[quantity]; //potentially unsafe
         for (int i = 0; i < quantity; i++) {
             heap[i] = arr[i];
@@ -21,9 +22,10 @@ class Heap {
 
     /**
      * small method to swap array elements, nothing special
+     *
      * @param arr - link to current array
-     * @param i - element index 1
-     * @param j - element index 2
+     * @param i   - element index 1
+     * @param j   - element index 2
      */
     private static void swap(int[] arr, int i, int j) {
         arr[i] = (arr[i] + arr[j]) - (arr[j] = arr[i]);
@@ -31,7 +33,8 @@ class Heap {
 
     /**
      * pulls lighter/smaller elements to the top of the heap
-     * @param v - index of element that is checked
+     *
+     * @param v     - index of element that is checked
      * @param array - link to current array
      */
     public void siftUp(int v, int[] array) {
@@ -45,8 +48,9 @@ class Heap {
 
     /**
      * pulls heavier/bigger elements to the bottom of the heap
-     * @param i - index of current element
-     * @param len - array size
+     *
+     * @param i     - index of current element
+     * @param len   - array size
      * @param array - link to current array
      */
     public void siftDown(int i, int len, int[] array) {
@@ -70,7 +74,8 @@ class Heap {
 
     /**
      * picks the smallest elements at a time and puts them to resulting array
-     * @param k - index of current element
+     *
+     * @param k     - index of current element
      * @param array - link to current array
      * @return - the lightest/smallest element at a time
      */
